@@ -1,21 +1,21 @@
 using UnityEngine;
 
-[RequireComponent(typeof(GroundDetector), typeof(InputReader), typeof(CharacterMover))]
-[RequireComponent(typeof(CharacterRenderer), typeof(CharacterCombat), typeof(Health))]
+[RequireComponent(typeof(GroundDetector), typeof(InputReader), typeof(PlayerMover))]
+[RequireComponent(typeof(PlayerRenderer), typeof(PlayerCombat), typeof(Health))]
 [RequireComponent(typeof(Picker))]
 public class Player : Character
 {
     private GroundDetector _groundDetector;
     private InputReader _inputReader;
-    private CharacterMover _mover;
-    private CharacterRenderer _characterRenderer;
+    private PlayerMover _mover;
+    private PlayerRenderer _characterRenderer;
 
     private void Awake()
     {
         _groundDetector = GetComponent<GroundDetector>();
         _inputReader = GetComponent<InputReader>();
-        _mover = GetComponent<CharacterMover>();
-        _characterRenderer = GetComponent<CharacterRenderer>();
+        _mover = GetComponent<PlayerMover>();
+        _characterRenderer = GetComponent<PlayerRenderer>();
     }
 
     private void FixedUpdate()

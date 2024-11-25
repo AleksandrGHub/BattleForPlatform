@@ -1,30 +1,13 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class CharacterRenderer : MonoBehaviour
+public class PlayerRenderer : Renderer
 {
     private Animator _animator;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-    }
-
-    public void Flip(float direction)
-    {
-        Vector2 rotate = transform.eulerAngles;
-
-        if (direction > 0)
-        {
-            rotate.y = 0;
-        }
-
-        if (direction < 0)
-        {
-            rotate.y = 180;
-        }
-
-        transform.rotation = Quaternion.Euler(rotate);
     }
 
     public void SetStateRun(float direction)

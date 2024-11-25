@@ -1,8 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D), typeof(Rigidbody2D))]
-public class Coin : MonoBehaviour
+public class Coin : Resource
 {
     public event Action<Coin> CollisionDetected;
 
@@ -23,9 +22,9 @@ public class Coin : MonoBehaviour
     public void Push()
     {
         float coordinateX;
-        float minCoordinateX = -90f;
-        float maxCoordinateX = 90f;
-        float coordinateY = 260f;
+        float minCoordinateX = -70f;
+        float maxCoordinateX = 70f;
+        float coordinateY = 220f;
         coordinateX = UnityEngine.Random.Range(minCoordinateX, maxCoordinateX);
         _rigidbody2D.AddForce(new Vector2(coordinateX, coordinateY));
 
@@ -36,13 +35,9 @@ public class Coin : MonoBehaviour
         _collider2D.enabled = true;
     }
 
-    public void SetActiveColliderFalse()
-    {
-        _collider2D.enabled = false;
-    }
-
-    public void SetVelocityZero()
+    public void Init()
     {
         _rigidbody2D.velocity = Vector2.zero;
+        _collider2D.enabled = false;
     }
 }

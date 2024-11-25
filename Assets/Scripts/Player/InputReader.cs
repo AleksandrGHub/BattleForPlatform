@@ -3,6 +3,8 @@ using UnityEngine;
 public class InputReader : MonoBehaviour
 {
     public const string Horizontal = nameof(Horizontal);
+    public const string Jump = nameof(Jump);
+    public const string Fire1 = nameof(Fire1);
 
     private bool _isJump;
     private bool _isAttack;
@@ -13,12 +15,12 @@ public class InputReader : MonoBehaviour
     {
         Direction = Input.GetAxis(Horizontal);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetButtonDown(Jump))
         {
             _isJump = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetButtonDown(Fire1))
         {
             _isAttack = true;
         }

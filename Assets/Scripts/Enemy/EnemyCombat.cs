@@ -11,7 +11,7 @@ public class EnemyCombat : Combat
         {
             if (collider.gameObject.TryGetComponent(out Player player))
             {
-                player.TakeDamage(_damage);
+                player.TakeDamage(Damage);
             }
         }
     }

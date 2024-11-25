@@ -1,4 +1,4 @@
-public class CharacterCombat : Combat
+public class PlayerCombat : Combat
 {
     private void Attack()
     {
@@ -6,7 +6,7 @@ public class CharacterCombat : Combat
         {
             if (collider.gameObject.TryGetComponent(out Enemy enemy))
             {
-                enemy.TakeDamage(_damage);
+                enemy.TakeDamage(Damage);
 
                 if (enemy.GetHealth() == 0)
                 {

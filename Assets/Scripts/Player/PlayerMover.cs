@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class CharacterMover : MonoBehaviour
+public class PlayerMover : MonoBehaviour
 {
     private float _speedX = 150;
     private float _jumpForce = 335;
