@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DetectorEnemy : MonoBehaviour
 {
-    public event Action<Vector2> PositionDetected;
-
     private List<Enemy> _enemys = new List<Enemy>();
+
+    public event Action<Vector2> PositionDetected;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

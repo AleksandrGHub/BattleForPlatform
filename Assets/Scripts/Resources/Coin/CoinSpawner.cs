@@ -34,23 +34,15 @@ public class CoinSpawner : MonoBehaviour
 
     private void OnDisable()
     {
-        foreach (var coin in _coins)
-        {
-            if (coin != null)
-            {
-                coin.CollisionDetected -= ReleaseObject;
-            }
-        }
-
         _detectorEnemy.PositionDetected -= Spawn;
     }
+
     private IEnumerator Countdown()
     {
         float delay = 0.6f;
         yield return new WaitForSeconds(delay);
-        SetActiveCoinsColliderTrue();
+        ActivateCoinsCollider();
     }
-
 
     public void Spawn(Vector2 position)
     {
@@ -60,11 +52,8 @@ public class CoinSpawner : MonoBehaviour
         {
             var coin = _pool.Get();
 
-            if (CanAdd(coin) == true)
-            {
-                _coins.Add(coin);
-                coin.CollisionDetected += ReleaseObject;
-            }
+            _coins.Add(coin);
+            coin.CollisionDetected += ReleaseObject;
         }
 
         StartCoroutine(Countdown());
@@ -78,31 +67,17 @@ public class CoinSpawner : MonoBehaviour
         coin.Push();
     }
 
-    private void SetActiveCoinsColliderTrue()
+    private void ActivateCoinsCollider()
     {
         foreach (var coin in _coins)
         {
-            coin.SetActiveColliderTrue();
+            coin.ActivateCollider();
         }
     }
 
     private void ReleaseObject(Coin coin)
     {
         _pool.Release(coin);
-    }
-
-    private bool CanAdd(Coin newCoin)
-    {
-        bool canAdd = true;
-
-        foreach (var coin in _coins)
-        {
-            if (coin == newCoin)
-            {
-                canAdd = false;
-            }
-        }
-
-        return canAdd;
+        coin.CollisionDetected -= ReleaseObject;
     }
 }

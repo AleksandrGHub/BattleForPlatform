@@ -7,7 +7,6 @@ public class EnemyMover : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private DetectorPlayer _detectorPlayer;
 
-    Collider2D _playerCollider;
     private Vector3[] _waypoints;
     private Vector3 _waypoint;
     private int _currentIndexWaypoint = 0;
@@ -51,11 +50,10 @@ public class EnemyMover : MonoBehaviour
     private Vector3 GetWaypoint()
     {
         Vector3 waypoint;
-        _playerCollider = _detectorPlayer.GetPlayerCollider();
 
-        if (_playerCollider != null)
+        if (_detectorPlayer.PlayerCollider != null)
         {
-            waypoint = _playerCollider.transform.position;
+            waypoint = _detectorPlayer.PlayerCollider.transform.position;
         }
         else
         {

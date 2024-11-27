@@ -14,7 +14,6 @@ public class Health : MonoBehaviour
 
     public void Increase(float health)
     {
-
         if (Quantity < _maxQuantity)
         {
             Quantity += health;
@@ -28,7 +27,6 @@ public class Health : MonoBehaviour
 
     public void Decrease(float damage)
     {
-
         if (Quantity > _minQuantity)
         {
             Quantity -= damage;
