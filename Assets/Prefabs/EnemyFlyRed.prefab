@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7c563aec51d2548a6b61f3d50fc0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 20
   _radius: 0.8
   _layerMask:
     serializedVersion: 2

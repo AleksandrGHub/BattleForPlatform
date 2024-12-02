@@ -1642,7 +1642,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: -2143169785936884842, guid: 6a657b8e1fd24804b92f96c65cd68186, type: 3}
-  _detectorEnemy: {fileID: 1416851643}
+  _playerCombat: {fileID: 1416851641}
   _poolCapacity: 10
   _poolMaxSize: 10
 --- !u!4 &941488574
@@ -3689,7 +3689,6 @@ GameObject:
   - component: {fileID: 1416851636}
   - component: {fileID: 1416851641}
   - component: {fileID: 1416851642}
-  - component: {fileID: 1416851643}
   - component: {fileID: 1416851644}
   m_Layer: 7
   m_Name: Player
@@ -3937,6 +3936,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb9c94e165039b4090850def79a82f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Damage: 60
   _radius: 0.8
   _layerMask:
     serializedVersion: 2
@@ -3954,18 +3954,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 1416851644}
---- !u!114 &1416851643
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1416851630}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84b607f79867bec459e1aa85773ac66e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1416851644
 MonoBehaviour:
   m_ObjectHideFlags: 0

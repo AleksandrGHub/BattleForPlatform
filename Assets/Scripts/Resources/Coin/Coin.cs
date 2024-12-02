@@ -25,9 +25,13 @@ public class Coin : Resource
         Collider2D.enabled = true;
     }
 
-    public void Init()
+    public void DeactivateCollider()
+    {
+        Collider2D.enabled = false;
+    }
+
+    public void ResetVelocity()
     {
         Rigidbody2D.velocity = Vector2.zero;
-        Collider2D.enabled = false;
     }
 }

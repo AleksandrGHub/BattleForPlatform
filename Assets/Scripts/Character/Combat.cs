@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
+    [SerializeField] protected float Damage = 40f;
     [SerializeField] private float _radius;
     [SerializeField] private LayerMask _layerMask;
-
-    protected float Damage = 40f;
 
     protected Collider2D[] GetColliders2D()
     {

@@ -8,15 +8,13 @@ public class Picker : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out Resource resource))
         {
-            if (resource is Coin)
+            if (resource is Coin coin)
             {
-                Coin coin = (Coin)resource;
                 coin.Release();
             }
 
-            if (resource is AidKit)
+            if (resource is AidKit aidKit)
             {
-                AidKit aidKit= (AidKit)resource;
                 _health.Increase(aidKit.Health);
                 Destroy(collision.gameObject);
             }

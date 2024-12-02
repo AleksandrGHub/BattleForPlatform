@@ -6,7 +6,7 @@ using UnityEngine.Pool;
 public class CoinSpawner : MonoBehaviour
 {
     [SerializeField] private Coin _prefab;
-    [SerializeField] private DetectorEnemy _detectorEnemy;
+    [SerializeField] private PlayerCombat _playerCombat;
     [SerializeField] private int _poolCapacity = 10;
     [SerializeField] private int _poolMaxSize = 10;
 
@@ -19,7 +19,7 @@ public class CoinSpawner : MonoBehaviour
     {
         _pool = new ObjectPool<Coin>(
             createFunc: () => Instantiate(_prefab),
-            actionOnGet: (coin) => SetParametersOnGet(coin),
+            actionOnGet: (coin) => Init(coin),
             actionOnRelease: (coin) => coin.gameObject.SetActive(false),
             actionOnDestroy: (coin) => Destroy(coin.gameObject),
             collectionCheck: true,
@@ -29,12 +29,12 @@ public class CoinSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        _detectorEnemy.PositionDetected += Spawn;
+        _playerCombat.PositionDetected += Spawn;
     }
 
     private void OnDisable()
     {
-        _detectorEnemy.PositionDetected -= Spawn;
+        _playerCombat.PositionDetected -= Spawn;
     }
 
     private IEnumerator Countdown()
@@ -59,10 +59,11 @@ public class CoinSpawner : MonoBehaviour
         StartCoroutine(Countdown());
     }
 
-    private void SetParametersOnGet(Coin coin)
+    private void Init(Coin coin)
     {
         coin.transform.position = _spawnPoint;
-        coin.Init();
+        coin.DeactivateCollider();
+        coin.ResetVelocity();
         coin.gameObject.SetActive(true);
         coin.Push();
     }
@@ -78,6 +79,7 @@ public class CoinSpawner : MonoBehaviour
     private void ReleaseObject(Coin coin)
     {
         _pool.Release(coin);
+        _coins.Remove(coin);
         coin.CollisionDetected -= ReleaseObject;
     }
 }
